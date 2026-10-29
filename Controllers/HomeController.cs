@@ -1,0 +1,3 @@
+using Microsoft.AspNetCore.Mvc;using GameVault.Services;
+namespace GameVault.Controllers;
+public class HomeController(GameVaultStore store):Controller { public IActionResult Index(string? q,string? status,string? genre) { var email=HttpContext.Session.GetString("Email");var games=store.ForUser(email).AsEnumerable();if(!string.IsNullOrWhiteSpace(q))games=games.Where(g=>g.Title.Contains(q,StringComparison.OrdinalIgnoreCase));if(!string.IsNullOrWhiteSpace(status))games=games.Where(g=>g.Status==status);if(!string.IsNullOrWhiteSpace(genre))games=games.Where(g=>g.Genre==genre);ViewBag.Stats=store.Stats(email);ViewBag.Query=q;ViewBag.Status=status;ViewBag.Genre=genre;ViewBag.IsLoggedIn=email!=null;return View(games.ToList());} public IActionResult Error()=>View(); }

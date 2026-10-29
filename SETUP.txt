@@ -1,0 +1,15 @@
+GAMEVAULT — QUICK START
+
+1. Extract the ZIP file.
+2. Open the GameVault folder in VS Code (File > Open Folder).
+3. Open Terminal > New Terminal.
+4. Run these commands one at a time:
+   dotnet restore
+   dotnet build
+   dotnet run
+5. Open the localhost URL shown in the terminal.
+6. Create an account to add/edit/delete games. The dashboard includes demo game records immediately.
+
+Requirements: .NET 10 SDK. No MySQL, SQL Server, or extra NuGet package installation is needed.
+
+Data is stored in App_Data/vault.json. Do not commit real personal data if you use this project beyond a classroom demo.
